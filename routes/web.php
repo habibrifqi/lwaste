@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('/', function () {
 //         return "asd";
 //     });
+Route::get('/get-data', 'ApiController@getData');
 
-Route::get('/kt/index', function () {
+
+Route::get('/kt', function () {
     return "hello";
 });
-
