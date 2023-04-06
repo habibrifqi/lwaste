@@ -36,7 +36,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">M</li>
+          <li class="nav-header">MENU</li>
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -45,6 +45,20 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('logout')}}"class="nav-link">
+              <i class="nav-icon far fas fa-power-off"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+          <?php
+            if(session('data'))
+                  $data = session('data'); 
+                  $role = $data->role;
+          ?>
+          {{-- <p><?php  echo $role ?></p> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

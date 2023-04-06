@@ -26,6 +26,21 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('Adminlte/plugins/summernote/summernote-bs4.min.css')}}">
   @yield('css')
+  <style>
+    .bb{
+      background-color: transparent;
+      border: none;
+      color: inherit;
+      font: inherit;
+      line-height: normal;
+      margin: 0;
+      padding: 0;
+      text-align: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      outline: inherit;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

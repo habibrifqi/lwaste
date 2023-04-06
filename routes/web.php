@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\Admin;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+route::get('/', [SessionController::class, 'index']);
+route::POST('/sesi/login', [SessionController::class, 'login']);
+route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
-// Route::get('/', function () {
-//         return "asd";
-//     });
-Route::get('/get-data', 'ApiController@getData');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
 
-
-Route::get('/kt', function () {
-    return "hello";
+    Route::get('/kt', function () {
+        return 'kt';
+    })->name('kt');
 });
