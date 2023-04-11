@@ -155,6 +155,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('Adminlte/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvu20UGxI7aHley4DMLxfMVuB5DHCxKSo"></script>
     <script src="{{ asset('js/home.js') }}"></script>
     <script></script>
@@ -229,6 +230,56 @@
         </div> --}}
 
                 <!-- ./col -->
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- AREA CHART -->
+
+                    <!-- /.card -->
+
+                    <!-- DONUT CHART -->
+                    <!-- /.card -->
+
+                    <!-- PIE CHART -->
+                    <div class="card card-success">
+                         <div class="card-header"> 
+                             <h3 class="card-title">Berat Sampah berdasarkan jenis</h3> 
+
+                             {{-- <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>  --}}
+                         </div> 
+                        <div class="card-body">
+                            <canvas id="pieChart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col (LEFT) -->
+                <div class="col-md-6">
+                    <!-- LINE CHART -->
+
+                    <!-- /.card -->
+
+                    <!-- BAR CHART -->
+
+                    <!-- /.card -->
+
+                    <!-- STACKED BAR CHART -->
+
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col (RIGHT) -->
             </div>
             <!-- /.row -->
             <!-- Main row -->
