@@ -1,5 +1,17 @@
+
+
+
+/* HOME */
+
 #map{
     width: 100%;
     background-color: aquamarine;
     height: 40em;
 }
+
+.row.rowChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
