@@ -12,7 +12,13 @@ function tampilChart(sampah) {
     var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
 
     var pieData = donutData;
-
+    if (document.readyState === 'loading') {
+        // jika status dokumen masih loading, maka website baru saja di-load
+        console.log('Website baru saja di-load');
+      } else {
+        // jika status dokumen sudah selesai loading, maka website tidak baru saja di-load
+        console.log('Website tidak baru saja di-load');
+      }
     var pieOptions = {
         legend: {
             display: true,
@@ -61,6 +67,7 @@ function tampilChart(sampah) {
                 },
             },
         },
+        animation: false, // menonaktifkan animasi
         maintainAspectRatio: false,
         responsive: true,
     };
@@ -71,18 +78,20 @@ function tampilChart(sampah) {
         options: pieOptions,
     });
 }
-
+function maps() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -6.21462, lng: 106.84513 },
+        zoom: 11,
+        mapTypeControl: true,
+    });
+}
 function apiGetWaste() {
     let berat_anorganik = 0;
     let berat_organik = 0;
     let berat_b3 = 0;
     let berat_residu = 0;
     // $(document).ready(function(){
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -6.21462, lng: 106.84513 },
-        zoom: 11,
-        mapTypeControl: true,
-    });
+    
     let lokasi_sampah = "/image/assest_dwms/recycling.png";
     let lokasi_tps = "/image/assest_dwms/industry.png";
 
@@ -105,6 +114,7 @@ function apiGetWaste() {
     );
 
     //mangil api sampah
+
     $.ajax({
         // url: "https://wastemanagement.tubagusariq.repl.co/waste",
         url: "https://waste.tubagusariq.repl.co/waste",
@@ -119,7 +129,7 @@ function apiGetWaste() {
                 // console.log("Jalur: " + value.jalur);
                 // console.log("Locations: ");
                 // endmatikan
-                $.each(value.locations, function (loc_index, loc_value) {
+                $.each(value.location, function (loc_index, loc_value) {
                     // melakukan perulangan untuk setiap objek lokasi di dalam array locations
                     // console.log("  Lat: " + loc_value.lat);
                     // console.log("  Long: " + loc_value.long);
@@ -145,11 +155,10 @@ function apiGetWaste() {
                 // endmatikan
 
                 if (Array.isArray(value.image) && value.image.length > 0) {
-                    console.log("image ada isi");
 
                     $.each(value.image, function (image_index, image_value) {
                         // melakukan perulangan untuk setiap objek lokasi di dalam array locations
-                        console.log("  typePhoto: " + image_value.typePhoto);
+                        // console.log("  typePhoto: " + image_value.typePhoto);
                         if (image_value.typePhoto == "anorganik") {
                             berat_anorganik += image_value.weight;
                             console.log(berat_anorganik);
@@ -177,27 +186,39 @@ function apiGetWaste() {
                 // console.log("Recorded: " + value.recorded);
             });
 
-            console.log(berat_anorganik);
-            console.log(berat_organik);
-            console.log(berat_b3);
-            console.log(berat_residu);
-            const sampah = {
+            // console.log(berat_anorganik);
+            // console.log(berat_organik);
+            // console.log(berat_b3);
+            // console.log(berat_residu);
+            let sampah = {
               anorganik: berat_anorganik,
               organik: berat_organik,
               b3: berat_b3,
               residu: berat_residu
             };
+            // console.log(sampah)
 
             tampilChart(sampah);
+            sampah.anorganik = 0
+            sampah.organik = 0
+            sampah.b3 = 0
+            sampah.residu = 0
+
+            // console.log(`sampah.anorganik ${sampah.anorganik}`);
+            // tampilChart(sampah);
         },
         error: function () {
             alert("Error");
         },
     });
-    console.log(berat_anorganik);
+   
+    // console.log(berat_anorganik);
 
     //  });
     //  console.log(dataWaste);
 }
-
+maps();
+setInterval(function() {
 apiGetWaste();
+},6000);
+// apiGetWaste();
