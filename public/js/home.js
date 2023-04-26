@@ -67,7 +67,7 @@ function tampilChart(sampah) {
                 },
             },
         },
-        animation: false, // menonaktifkan animasi
+        // animation: false, // menonaktifkan animasi
         maintainAspectRatio: false,
         responsive: true,
     };
@@ -79,11 +79,73 @@ function tampilChart(sampah) {
     });
 }
 function maps() {
-    map = new google.maps.Map(document.getElementById("map"), {
+     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -6.21462, lng: 106.84513 },
-        zoom: 11,
-        mapTypeControl: true,
+        zoom: 15,
+        disableDefaultUI: false,
+        mapId: "9c7c6601edbd542f",
+        // mapTypeId: google.maps.MapTypeId.ROADMAP,
+        // styles: [
+        //     {
+        //       "featureType": "poi",
+        //       "elementType": "labels.text",
+        //       "stylers": [
+        //         {
+        //           "visibility": "off"
+        //         }
+        //       ]
+        //     },
+        // ]
+           
+        // disableDefaultUI: true,
     });
+    
+
+    var st =[
+        {
+            "featureType": "administrative",
+            "elementType": "geometry",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "poi",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "road",
+            "elementType": "labels.icon",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "transit",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          }
+      ]
+
+    // map.setOptions({styles : st})
+
+   
+    // var mapOptions = {
+    //     zoom: 15,
+    //     center: { lat: -6.21462, lng: 106.84513 },
+    //   };
+    // var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 function apiGetWaste() {
     let berat_anorganik = 0;
@@ -112,6 +174,38 @@ function apiGetWaste() {
         null, // anchor is bottom center of the image
         new google.maps.Size(30, 30) // size of the image in pixels
     );
+    
+    // var marker = new google.maps.Marker({
+    //     position: {
+    //         lat: -6.202934,
+    //         lng: 106.912649,
+    //     },
+    //     map: map
+    //     // icon: markerImage_lokasi_sampah,
+    // });
+
+    var marker = new google.maps.Marker({
+        position: {
+            lat: -6.202934, 
+            lng: 106.912649
+        },
+        map: map
+    });
+
+    // var circle = new google.maps.Circle({
+    //     strokeColor: '#FF0000',
+    //     strokeOpacity: 0.8,
+    //     strokeWeight: 2,
+    //     fillColor: '#FF0000',
+    //     fillOpacity: 0.35,
+    //     map: map,
+    //     center: {lat: 6.202934, lng: 106.912649},
+    //     radius: 5
+    // });
+
+    
+
+    // marker.bindTo('position', circle);
 
     //mangil api sampah
 
@@ -218,7 +312,7 @@ function apiGetWaste() {
     //  console.log(dataWaste);
 }
 maps();
-setInterval(function() {
-apiGetWaste();
-},6000);
+// setInterval(function() {
 // apiGetWaste();
+// },6000);
+apiGetWaste();

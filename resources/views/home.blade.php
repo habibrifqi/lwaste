@@ -157,6 +157,7 @@
 @section('js')
     <script src="{{ asset('Adminlte/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvu20UGxI7aHley4DMLxfMVuB5DHCxKSo"></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuPGla6SLDp0RWVzqaha4GkjPaEpn9pBg"></script> --}}
     <script src="{{ asset('js/home.js') }}"></script>
     <script></script>
 @endsection
