@@ -16,7 +16,7 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ asset('Adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="{{asset('Adminlte/plugins/jqvmap/jqvmap.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('Adminlte/plugins/jqvmap/jqvmap.min.css')}}"> --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('Adminlte/dist/css/adminlte.min.css')}}">
   <!-- overlayScrollbars -->
@@ -95,9 +95,9 @@
 <!-- ./wrapper -->
 
   {{-- jquery --}}
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> --}}
 <!-- jQuery -->
-{{-- <script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script> --}}
+<script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('Adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -111,17 +111,17 @@
 <!-- Sparkline -->
 <script src="{{asset('Adminlte/plugins/sparklines/sparkline.js')}}"></script>
 <!-- JQVMap -->
-<script src="{{asset('Adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('Adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+{{-- <script src="{{asset('Adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{asset('Adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script> --}}
 <!-- jQuery Knob Chart -->
 <script src="{{asset('Adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{asset('Adminlte/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('Adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('Adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+{{-- <script src="{{asset('Adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script> --}}
 <!-- Summernote -->
-<script src="{{asset('Adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
+{{-- <script src="{{asset('Adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
 <!-- overlayScrollbars -->
 <script src="{{asset('Adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->

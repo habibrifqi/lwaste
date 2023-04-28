@@ -152,13 +152,51 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href=" {{ asset('Adminlte/plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/daterangepicker/daterangepicker.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+
+    <link rel="stylesheet"
+        href="{{ asset('Adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/bs-stepper/css/bs-stepper.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/dropzone/min/dropzone.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Adminlte/dist/css/adminlte.min.css') }}">
 @endsection
 
 @section('js')
-    <script src="{{ asset('Adminlte/plugins/chart.js/Chart.min.js') }}"></script>
+    {{-- <script src="{{ asset('Adminlte/plugins/chart.js/Chart.min.js') }}"></script> --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvu20UGxI7aHley4DMLxfMVuB5DHCxKSo"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('Adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Select2 -->
+    {{-- <script src="{{ asset('Adminlte/plugins/select2/js/select2.full.min.js') }}"></script> --}}
+    <!-- InputMask -->
+    <script src="{{ asset('Adminlte/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{{ asset('Adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuPGla6SLDp0RWVzqaha4GkjPaEpn9pBg"></script> --}}
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
     <script src="{{ asset('js/home.js') }}"></script>
+
+
     <script></script>
 @endsection
 
@@ -257,25 +295,41 @@
                             </div>  --}}
                         </div>
                         <div class="card-body">
-                            <div class="row rowChat">
-                                <div class="pieChatt">
-                                    <canvas id="pieChart"
-                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                </div>
-                            </div>
+                            {{-- <div class="row rowChat"> --}}
+                            {{-- <div class="row"> --}}
+                                {{-- <div class="pieChatt"> --}}
+                                    {{-- <canvas id="pieChart"
+                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
+                                    {{-- <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto"> --}}
+                                    <div id="chartContainer"
+                                        style="min-height: 250px; height: 360px; max-height: 600px; max-width: 100%;">
+                                    </div>
+                                {{-- </div> --}}
+
+
+
+                                <div class="form-group vv">
+                                    <label>Date:</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input"
+                                            data-target="#reservationdate" id="tanggal1" />
+                                        <div class="input-group-append" data-target="#reservationdate"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            {{-- </div> --}}
+                            <!-- /.card -->
+
+
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.col (LEFT) -->
+                        <!-- /.col (RIGHT) -->
                     </div>
-                    <!-- /.card -->
-
-
-                </div>
-                <!-- /.col (LEFT) -->
-                <!-- /.col (RIGHT) -->
-            </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+                    <!-- /.row -->
+                    <!-- Main row -->
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
     </section>
 @endsection
