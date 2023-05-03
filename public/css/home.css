@@ -32,7 +32,11 @@
         margin-right: 10px;
     }
     .button-export{
-        width: 100px;
+        width: 150px;
+        position: absolute;
+    width: 165px;
+    right: 10px;
+    bottom: 37px;
     }
 }
 

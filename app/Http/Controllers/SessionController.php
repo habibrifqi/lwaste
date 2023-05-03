@@ -23,7 +23,7 @@ class SessionController extends Controller
             try {
                 // lakukan aksi yang mungkin menimbulkan kesalahan, misalnya login user
                 // $client = new Client(['base_uri' => 'https://wastemanagement.tubagusariq.repl.co/login']);
-                $client = new Client(['base_uri' => 'https://waste.tubagusariq.repl.co/login']);
+                $client = new Client(['base_uri' => 'https://wastemngmt.fdvsdeveloper.repl.co/login']);
                 $response = $client->request('POST', 'login', [
                     'form_params' => [
                         'email' => $request->email,
@@ -44,9 +44,9 @@ class SessionController extends Controller
 
     }
 
-    function logout(Request $request)
-    {
-        $request->session()->flush();
-        return redirect('/login');
-    }
-}
+                    function logout(Request $request)
+                    {
+                        $request->session()->flush();
+                        return redirect('/login');
+                    }
+                }
