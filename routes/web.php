@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\Admin;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get('/', [SessionController::class, 'index']);
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
 route::POST('/sesi/login', [SessionController::class, 'login']);
 route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
@@ -25,6 +31,8 @@ Route::group(['middleware' => 'admin'], function () {
     })->name('home');
 
     Route::get('/kt', function () {
-        return 'kt';
+        return " view('home')";
     })->name('kt');
+
+    route::POST('/export', [ExportController::class, 'export'])->name('export');
 });

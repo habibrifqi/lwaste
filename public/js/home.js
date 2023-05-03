@@ -35,7 +35,7 @@ function ChartPie(sampah) {
     b3Persend = ((sampah.b3 / totalSampah) * 100).toFixed(2) + " %";
     residuPersend = ((sampah.residu / totalSampah) * 100).toFixed(2) + " %";
     // console.log(totalSampah);
-    
+
     //colorset1
     //     dodgerblue
     // limegreen
@@ -84,8 +84,8 @@ function ChartPie(sampah) {
             },
         ],
         toolTip: {
-            content: "{label}: {y} Kg" // menampilkan label dan nilai y pada tooltip
-          }
+            content: "{label}: {y} Kg", // menampilkan label dan nilai y pada tooltip
+        },
     };
     $("#chartContainer").CanvasJSChart(options);
     // const chart = new CanvasJS.Chart("#chartContainer", options);
@@ -400,7 +400,13 @@ function apiGetWaste(tanngal = 0) {
             };
             // console.log(sampah);
             ChartPie(sampah);
-            // aa({anorganik: 35.5, organik: 10, b3: 25.5, residu: 10});
+
+            
+            let copiedObj1 = Object.assign({}, sampah);
+            const samppahArray = Object.entries(copiedObj1).map(([key, value]) => [key, value]);
+            const judulsampah = ['jenis sampah', 'berat Kg'];
+            samppahArray.unshift(judulsampah);
+
 
             // tampilChart(sampah);
             sampah.anorganik = 0;
@@ -429,6 +435,79 @@ function apiGetWaste(tanngal = 0) {
                 // apiGetWaste(formattedDate).reload();
                 apiGetWaste(formattedDate);
                 maps();
+            });
+
+            
+
+            //contoh awal
+            //   function exportToCsv(filename, rows) {
+            //     var csv = Papa.unparse(rows);
+            //     var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            //     var url = URL.createObjectURL(blob);
+
+            //     var link = document.createElement("a");
+            //     link.setAttribute("href", url);
+            //     link.setAttribute("download", filename);
+            //     link.style.visibility = "hidden";
+
+            //     document.body.appendChild(link);
+            //     link.click();
+            //     document.body.removeChild(link);
+            //   }
+
+            //   $("#export-btn").on("click", function() {
+            //     exportToCsv("data.csv", data);
+            //     console.log("asdas");
+            //   });\
+
+            // Opsi untuk mengatur kolom pada file CSV
+
+
+            // Fungsi untuk mengekspor data ke dalam file CSV
+            // Tambahkan event listener pada tombol ekspor
+            $("#export-btn").click(function () {
+                // exportCSV();
+                console.log(copiedObj1);
+                dateValue = $("#tanggal1").val();
+                const judulTanggal = [`${dateValue}`];
+                samppahArray.unshift(judulTanggal);
+                const datas =[
+                        {"name": "John", "age": 30},
+                        {"name": "Jane", "age": 25},
+                        {"name": "Mark", "age": 40}
+                    ];
+                var token = $('input[name=_token').val();
+                // console.log(token);
+                var form_data = $('#form-data').serialize();
+
+                $.ajax({
+                    // url: '/export',
+                    url: '/export',
+                    type: 'POST',
+                    data: {
+                        datasampah : samppahArray,
+                        tanggal :dateValue,
+                        _token :token
+                    },
+                    // dataType: 'json',
+                    success: function(data) {
+                        window.location.href = data.download_url;
+                        // console.log(data);
+                        // window.location.href = data.file;
+                        // console.log(data)
+                        // alert("databerhasil")
+
+                        // var downloadUrl = response.file;
+                        // var anchor = document.createElement('a');
+                        // anchor.href = downloadUrl;
+                        // anchor.download = 'data.csv';
+                        // anchor.click();
+                    },
+                    error: function(data) {
+                        // console.log(data);
+                        alert("GAGL")
+                    }
+                });
             });
 
             // console.log(`sampah.anorganik ${sampah.anorganik}`);

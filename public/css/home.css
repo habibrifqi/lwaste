@@ -18,6 +18,7 @@
 
 
 
+
 /* responsive */
 @media only screen and (min-width: 1000px)  {
     .form-group.vv {
@@ -29,6 +30,9 @@
         /* margin: 100px; */
         margin-top: 50px;
         margin-right: 10px;
+    }
+    .button-export{
+        width: 100px;
     }
 }
 

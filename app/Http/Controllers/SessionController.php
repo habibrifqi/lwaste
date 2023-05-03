@@ -11,6 +11,10 @@ class SessionController extends Controller
     function index()
     {
         // return view('sesi/index');
+        if (session('data')) {
+            return view('home');
+        }
+        // return view('login');
         return view('login');
     }
 
@@ -35,7 +39,7 @@ class SessionController extends Controller
                 
                 return redirect('/home');
             } catch (\Exception $e) {
-                return redirect('/')->with('message','Email atau pasword salah');
+                return redirect('/login')->with('message','Email atau pasword salah');
             }
 
     }
@@ -43,6 +47,6 @@ class SessionController extends Controller
     function logout(Request $request)
     {
         $request->session()->flush();
-        return redirect('/');
+        return redirect('/login');
     }
 }

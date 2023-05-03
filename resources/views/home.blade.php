@@ -193,6 +193,7 @@
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuPGla6SLDp0RWVzqaha4GkjPaEpn9pBg"></script> --}}
 
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script src="path/PapaParse/papaparse.min.js"></script>
 
     <script src="{{ asset('js/home.js') }}"></script>
 
@@ -201,6 +202,7 @@
 @endsection
 
 @section('content')
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
@@ -318,7 +320,16 @@
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
+                                   
                                 </div> 
+                                <div class="button-export">
+                                    {{-- <form action="/export" method="post" > --}}
+                                    <form >
+                                        @csrf
+                                    <button type="button" class="btn btn-block btn-success" id="export-btn">export</button>
+                                    </form>
+                                    
+                                </div>
                             {{-- </div> --}}
                             <!-- /.card -->
 
