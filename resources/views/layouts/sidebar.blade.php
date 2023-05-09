@@ -53,12 +53,21 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('kt')}}"class="nav-link">
+              <i class="nav-icon far fas fa-power-off"></i>
+              <p>
+                KT
+              </p>
+            </a>
+          </li>
           <?php
-            if(session('data'))
-                  $data = session('data'); 
-                  $role = $data->role;
+            // if(session('data'))
+            //       $data = session('data'); 
+            //       $role = $data->role;
+            // echo '<pre>';print_r(session('data')->role);die;
           ?>
-          {{-- <p><?php  echo $role ?></p> --}}
+          {{-- <p><?//php  echo $role ?></p> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

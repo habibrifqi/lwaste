@@ -207,6 +207,32 @@ function apiGetWaste(tanggal = 0) {
     new google.maps.Size(30, 30) // size of the image in pixels
   );
 
+  var directionsService = new google.maps.DirectionsService();
+  var request = {
+    origin: {lat: -6.198334, lng: 106.914853},
+    destination: {lat: -6.196382, lng:106.910827},
+    travelMode: google.maps.TravelMode.DRIVING,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    provideRouteAlternatives: false,
+    avoidHighways: false,
+    avoidTolls: false
+  };
+   // Kirim permintaan API ke Google Maps DirectionsService
+   directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      // Jarak dalam meter
+      var distance_in_meters = result.routes[0].legs[0].distance.value;
+
+      // Jarak dalam kilometer
+      var distance_in_kilometers = distance_in_meters / 1000;
+
+      console.log(distance_in_meters);
+    }else {
+      // Tampilkan pesan kesalahan pada halaman
+      console.log(status);
+    }
+  });
+
   //contoh marker
   // new google.maps.Marker({
   //     position: {

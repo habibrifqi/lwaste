@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\CheckUserRole;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
@@ -31,8 +32,8 @@ Route::group(['middleware' => 'admin'], function () {
     })->name('home');
 
     Route::get('/kt', function () {
-        return " view('home')";
-    })->name('kt');
+        return "KT";
+    })->name('kt')->middleware('CheckUserRole');
 
     route::POST('/export', [ExportController::class, 'export'])->name('export');
 });
