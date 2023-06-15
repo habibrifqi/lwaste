@@ -33,7 +33,7 @@ function ChartPie(sampah) {
 
   const dataPoints = [
     {
-      label: "Anorgamik",
+      label: "Anorganik",
       y: sampah.anorganik,
       description: anorganikPersend,
       color: "lightskyblue",
@@ -218,20 +218,20 @@ function apiGetWaste(tanggal = 0) {
     avoidTolls: false
   };
    // Kirim permintaan API ke Google Maps DirectionsService
-   directionsService.route(request, function(result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      // Jarak dalam meter
-      var distance_in_meters = result.routes[0].legs[0].distance.value;
+  //  directionsService.route(request, function(result, status) {
+  //   if (status == google.maps.DirectionsStatus.OK) {
+  //     // Jarak dalam meter
+  //     var distance_in_meters = result.routes[0].legs[0].distance.value;
 
-      // Jarak dalam kilometer
-      var distance_in_kilometers = distance_in_meters / 1000;
+  //     // Jarak dalam kilometer
+  //     var distance_in_kilometers = distance_in_meters / 1000;
 
-      console.log(distance_in_meters);
-    }else {
-      // Tampilkan pesan kesalahan pada halaman
-      console.log(status);
-    }
-  });
+  //     console.log(distance_in_meters);
+  //   }else {
+  //     // Tampilkan pesan kesalahan pada halaman
+  //     console.log(status);
+  //   }
+  // });
 
   //contoh marker
   // new google.maps.Marker({
@@ -301,12 +301,12 @@ function apiGetWaste(tanggal = 0) {
           $.each(value.image, function (image_index, image_value) {
             // melakukan perulangan untuk setiap objek lokasi di dalam array locations
             // console.log("  typePhoto: " + image_value.typePhoto);
-            if (image_value.typePhoto == "anorganik") {
+            if (image_value.typePhoto.toLowerCase() == "anorganik") {
               berat_anorganik += image_value.weight;
               // console.log(berat_anorganik);
-            } else if (image_value.typePhoto == "organik") {
+            } else if (image_value.typePhoto.toLowerCase()  == "organik") {
               berat_organik += image_value.weight;
-            } else if (image_value.typePhoto == "b3") {
+            } else if (image_value.typePhoto.toLowerCase()  == "b3") {
               berat_b3 += image_value.weight;
             } else {
               berat_residu += image_value.weight;
@@ -338,7 +338,7 @@ function apiGetWaste(tanggal = 0) {
         b3: berat_b3,
         residu: berat_residu,
       };
-      // console.log(sampah);
+      console.log(sampah);
       ChartPie(sampah);
 
       let copiedObj1 = Object.assign({}, sampah);
@@ -420,6 +420,7 @@ function apiGetWaste(tanggal = 0) {
 
 $(() => {
   tanggalAwalload = $("#tanggal1").val();
+  console.log(tanggalAwalload)
 
   function formattanggal(params) {
     const dateParts = params.split("/");
