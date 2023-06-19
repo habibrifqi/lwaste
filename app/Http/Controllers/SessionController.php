@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
+use DataTables;
 
 class SessionController extends Controller
 {
@@ -47,4 +48,42 @@ class SessionController extends Controller
         $request->session()->flush();
         return redirect('/login');
     }
+
+    function kt(Request $request)
+    {
+        // echo "asdas";
+        $client = new Client();
+        // $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/waste');
+        $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/waste');
+    
+        $statusCode = $response->getStatusCode(); // Mendapatkan status code dari response
+        $body = $response->getBody(); // Mendapatkan body respon
+        $array = json_decode($body, true);
+        // $halValue =$array['entries'];
+        // echo "<pre>";print_r($array[0]);die;
+        if($request->ajax()){
+            return Datatables::of($array)->addIndexColumn()
+            ->addColumn('action', function($array){
+                $button = '<button type="button" name="edit" id="'.$array['_id'].'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
+                $button .= '   <button type="button" name="edit" id="$data->id" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                return $button;
+            })->make(true);
+
+        }
+
+
+
+        // $client = new Client();
+        // $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/waste');
+    
+        // $statusCode = $response->getStatusCode(); // Mendapatkan status code dari response
+        // $body = $response->getBody(); // Mendapatkan body respon
+        // $array = json_decode($body, true);
+        // echo "<pre>";print_r($array);die;
+        // echo "<pre>";echo $body;die;
+        // return "Kt";
+        return view('kt');
+    }
+
+    
 }

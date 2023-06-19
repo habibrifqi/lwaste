@@ -93,7 +93,8 @@
             {data: 'DT_RowIndex'},
             {data: '_id', name: '_id'},
             {data: 'pengepul'},
-            {data: 'date'},
+            // {data: 'date'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
 
 
