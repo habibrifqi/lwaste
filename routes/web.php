@@ -31,9 +31,11 @@ Route::group(['middleware' => 'admin'], function () {
         return view('home');
     })->name('home');
 
-    Route::get('/kt', function () {
-        return "KT";
-    })->name('kt')->middleware('CheckUserRole');
+    // Route::get('/kt', function () {
+    //     return "KT";
+    // })->name('kt')->middleware('CheckUserRole');
+
+    route::get('/kt', [SessionController::class, 'kt'])->name('kt')->middleware('CheckUserRole');
 
     route::POST('/export', [ExportController::class, 'export'])->name('export');
 });
