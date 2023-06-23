@@ -39,9 +39,18 @@
           <li class="nav-header">MENU</li>
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('kt')}}"class="nav-link">
+              {{-- <i class="nav-icon far fa-linode"></i> --}}
+              <i class="nav-icon fas fa-prescription-bottle-alt"></i>
+              <p>
+                Petugas
               </p>
             </a>
           </li>
@@ -50,14 +59,6 @@
               <i class="nav-icon far fas fa-power-off"></i>
               <p>
                 Logout
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('kt')}}"class="nav-link">
-              <i class="nav-icon far fas fa-power-off"></i>
-              <p>
-                KT
               </p>
             </a>
           </li>

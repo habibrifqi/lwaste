@@ -22,6 +22,12 @@ class Admin
            return redirect('/');
         }
 
+        $user = session('data');
+        //role user yg ngak boleh login
+        if ($user->role == 'produsen') {
+            return redirect('/login')->with('message', 'Email atau password salah');
+        }
+
         return $next($request);
     }
 }
