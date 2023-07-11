@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashoard
+    Petugas Sampah
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Petugas</li>
 @endsection
 
 @section('css')
@@ -46,6 +46,11 @@
      <!-- Theme style -->
      <link rel="stylesheet" href="{{asset('Adminlte/dist/css/adminlte.min.css')}}">
 
+     <style>
+        .dt-buttons.btn-group.flex-wrap {
+    position: absolute;
+}
+     </style>
 
 
 @endsection
@@ -103,8 +108,8 @@
             {data: 'DT_RowIndex'},
             {data: '_id', name: '_id'},
             {data: 'pengepul'},
-            // {data: 'date'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'date'},
+            // {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
 
 
@@ -122,7 +127,7 @@
                 <div class="col-md-12">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Berat Sampah berdasarkan jenis</h3>
+                            <h3 class="card-title">Data Petugas sampah</h3>
 
                         </div>
                         <div class="card-body">

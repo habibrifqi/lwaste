@@ -171,6 +171,7 @@ function maps() {
   });
 }
 function apiGetWaste(tanggal = 0) {
+  maps();
   var urlApi = "";
   if (tanggal == 0) {
     var urlApi = "https://wastemngmt.fdvsdeveloper.repl.co/waste";
@@ -209,15 +210,15 @@ function apiGetWaste(tanggal = 0) {
 
   var directionsService = new google.maps.DirectionsService();
   var request = {
-    origin: {lat: -6.198334, lng: 106.914853},
-    destination: {lat: -6.196382, lng:106.910827},
+    origin: { lat: -6.198334, lng: 106.914853 },
+    destination: { lat: -6.196382, lng: 106.910827 },
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.METRIC,
     provideRouteAlternatives: false,
     avoidHighways: false,
-    avoidTolls: false
+    avoidTolls: false,
   };
-   // Kirim permintaan API ke Google Maps DirectionsService
+  // Kirim permintaan API ke Google Maps DirectionsService
   //  directionsService.route(request, function(result, status) {
   //   if (status == google.maps.DirectionsStatus.OK) {
   //     // Jarak dalam meter
@@ -304,9 +305,9 @@ function apiGetWaste(tanggal = 0) {
             if (image_value.typePhoto.toLowerCase() == "anorganik") {
               berat_anorganik += image_value.weight;
               // console.log(berat_anorganik);
-            } else if (image_value.typePhoto.toLowerCase()  == "organik") {
+            } else if (image_value.typePhoto.toLowerCase() == "organik") {
               berat_organik += image_value.weight;
-            } else if (image_value.typePhoto.toLowerCase()  == "b3") {
+            } else if (image_value.typePhoto.toLowerCase() == "b3") {
               berat_b3 += image_value.weight;
             } else {
               berat_residu += image_value.weight;
@@ -338,7 +339,7 @@ function apiGetWaste(tanggal = 0) {
         b3: berat_b3,
         residu: berat_residu,
       };
-      console.log(sampah);
+      // console.log(sampah);
       ChartPie(sampah);
 
       let copiedObj1 = Object.assign({}, sampah);
@@ -354,13 +355,25 @@ function apiGetWaste(tanggal = 0) {
       sampah.organik = 0;
       sampah.b3 = 0;
       sampah.residu = 0;
+      // console.log(markers);
 
+      if (markers.length > 0) {
+        var bounds = new google.maps.LatLngBounds();
+        // for (var i = 0; i < markers.length; i++) {
+        bounds.extend(markers[markers.length - 1].getPosition());
+        // }
+        map.fitBounds(bounds);
+        var zoomLevel = map.getZoom();
+        // console.log(zoomLevel);
+        map.setZoom(zoomLevel - 7);
+      }
       //kalau tangal onchange
       $("#reservationdate").on("change.datetimepicker", function () {
         //menghapus object markers
         for (let i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
+        // markers = [];
 
         //mengambil data dari tanggal
         dateValue = $("#tanggal1").val();
@@ -372,12 +385,12 @@ function apiGetWaste(tanggal = 0) {
         const day = dateParts[0].padStart(2, "0");
         const formattedDate = `${year}-${month}-${day}`;
         apiGetWaste(formattedDate);
-        maps();
+        // maps();
       });
 
       $("#export-btn").click(function () {
         // exportCSV();
-        console.log(copiedObj1);
+        // console.log(copiedObj1);
         dateValue = $("#tanggal1").val();
         const judulTanggal = [`${dateValue}`];
         samppahArray.unshift(judulTanggal);
@@ -420,7 +433,7 @@ function apiGetWaste(tanggal = 0) {
 
 $(() => {
   tanggalAwalload = $("#tanggal1").val();
-  console.log(tanggalAwalload)
+  // console.log(tanggalAwalload);
 
   function formattanggal(params) {
     const dateParts = params.split("/");
@@ -432,6 +445,6 @@ $(() => {
     return formattedDate;
   }
 
-  maps();
+  // maps();
   apiGetWaste(formattanggal(tanggalAwalload));
 });

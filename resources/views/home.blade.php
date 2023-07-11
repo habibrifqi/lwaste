@@ -142,7 +142,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashoard
+Dashboard
 @endsection
 
 @section('breadcrumb')
