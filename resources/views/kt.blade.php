@@ -48,8 +48,8 @@
 
      <style>
         .dt-buttons.btn-group.flex-wrap {
-    position: absolute;
-}
+        position: absolute;
+    }
      </style>
 
 
@@ -58,12 +58,12 @@
 @section('js')
     {{-- <script src="{{ asset('Adminlte/plugins/chart.js/Chart.min.js') }}"></script> --}}
     <!-- jQuery -->
-    <script src="{{ asset('Adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('Adminlte/plugins/jquery/jquery.min.js') }}"></script> --}}
     <!-- Select2 -->
     {{-- <script src="{{ asset('Adminlte/plugins/select2/js/select2.full.min.js') }}"></script> --}}
     <!-- InputMask -->
-    <script src="{{ asset('Adminlte/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('Adminlte/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    {{-- <script src="{{ asset('Adminlte/plugins/moment/moment.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('Adminlte/plugins/inputmask/jquery.inputmask.min.js') }}"></script> --}}
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('Adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuPGla6SLDp0RWVzqaha4GkjPaEpn9pBg"></script> --}}
@@ -73,10 +73,10 @@
 
     {{-- khsusus page --}}
      <!-- jQuery -->
-     <script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script>
+     {{-- <script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script> --}}
  
      <!-- Bootstrap 4 -->
-     <script src="{{asset('Adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+     {{-- <script src="{{asset('Adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
      <!-- DataTables  & Plugins -->
      <script src="{{asset('Adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
      <script src="{{asset('Adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -92,7 +92,7 @@
      <script src="{{asset('Adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
  
      <!-- AdminLTE App -->
-     <script src="{{asset('Adminlte/dist/js/adminlte.min.js')}}"></script>
+     {{-- <script src="{{asset('Adminlte/dist/js/adminlte.min.js')}}"></script> --}}
 
     <script>
           $(function () {
