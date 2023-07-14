@@ -54,7 +54,7 @@ class SessionController extends Controller
         // echo "asdas";
         $client = new Client();
         // $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/waste');
-        $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/waste');
+        $response = $client->request('GET', 'https://wastemngmt.fdvsdeveloper.repl.co/user');
     
         $statusCode = $response->getStatusCode(); // Mendapatkan status code dari response
         $body = $response->getBody(); // Mendapatkan body respon

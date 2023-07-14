@@ -37,22 +37,20 @@
     <link rel="stylesheet" href="{{ asset('Adminlte/dist/css/adminlte.min.css') }}">
 
     {{-- khusus page  --}}
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="{{asset('Adminlte/plugins/fontawesome-free/css/all.min.css')}}">
-     <!-- DataTables -->
-     <link rel="stylesheet" href="{{asset('Adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-     <link rel="stylesheet" href="{{asset('Adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-     <link rel="stylesheet" href="{{asset('Adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
-     <!-- Theme style -->
-     <link rel="stylesheet" href="{{asset('Adminlte/dist/css/adminlte.min.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('Adminlte/dist/css/adminlte.min.css') }}">
 
-     <style>
+    <style>
         .dt-buttons.btn-group.flex-wrap {
-        position: absolute;
-    }
-     </style>
-
-
+            position: absolute;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -72,50 +70,81 @@
 
 
     {{-- khsusus page --}}
-     <!-- jQuery -->
-     {{-- <script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script> --}}
- 
-     <!-- Bootstrap 4 -->
-     {{-- <script src="{{asset('Adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
-     <!-- DataTables  & Plugins -->
-     <script src="{{asset('Adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/jszip/jszip.min.j')}}s"></script>
-     <script src="{{asset('Adminlte/plugins/pdfmake/pdfmake.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/pdfmake/vfs_fonts.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-     <script src="{{asset('Adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
- 
-     <!-- AdminLTE App -->
-     {{-- <script src="{{asset('Adminlte/dist/js/adminlte.min.js')}}"></script> --}}
+    <!-- jQuery -->
+    {{-- <script src="{{asset('Adminlte/plugins/jquery/jquery.min.js')}}"></script> --}}
+
+    <!-- Bootstrap 4 -->
+    {{-- <script src="{{asset('Adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('Adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/jszip/jszip.min.j') }}s"></script>
+    <script src="{{ asset('Adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('Adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <!-- AdminLTE App -->
+    {{-- <script src="{{asset('Adminlte/dist/js/adminlte.min.js')}}"></script> --}}
 
     <script>
-          $(function () {
-        var table = $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            dom: 'Bfrtip',
-        // "serverSide" : true,
-        // "lengthChange": false, 
-        // "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print"],
-        ajax : "{{route('kt')}}",
-        columns: [
-            {data: 'DT_RowIndex'},
-            {data: '_id', name: '_id'},
-            {data: 'pengepul'},
-            {data: 'date'},
-            // {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
+        $(function() {
+            var table = $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "order": [
+                    [1, "asc"]
+                ],
+                "rowGroup": {
+                    "dataSrc": function(row) {
+                        return row.No;
+                    },
+                    "startRender": function(rows, group) {
+                        return group;
+                    },
+                },
+                dom: 'Bfrtip',
+                // "serverSide" : true,
+                // "lengthChange": false, 
+                // "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print"],
+                ajax: "{{ route('kt') }}",
+                columns: [{
+                        // data: 'DT_RowIndex'
+                        data: null
+                    },
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: '_id'
+                    },
+                    {
+                        data: 'role'
+                    },
+                    // {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+                "createdRow": function(row, data, dataIndex) {
+                    $(row).find("td:first").text(dataIndex + 1);
+                }
 
+            }).on('order.dt search.dt', function() {
+                $('#example1').DataTable().column(0, {
+                    search: 'applied',
+                    order: 'applied'
+                }).nodes().each(function(cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            }).draw();
 
-        })
-        
-    });
+        });
     </script>
 @endsection
 
@@ -131,22 +160,20 @@
 
                         </div>
                         <div class="card-body">
-                          <table id="example1" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                              <th>no</th>
-                              <th>id</th>
-                              <th>pengepul</th>
-                              <th>date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                          </table>
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>no</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
     </section>
-
-   
 @endsection
